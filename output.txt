@@ -1,0 +1,52 @@
+>>> from apps.dojo_ninjas.models import *
+>>> Dojo.objects.create(name="CodingDojo Silicon Valley", city="Mountain View", state="CA")
+<Dojo: - ( id: 1, dojo name: CodingDojo Silicon Valley, dojo city: Mountain View, dojo state: CA ) ->
+>>> Dojo.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+<Dojo: - ( id: 2, dojo name: CodingDojo Seattle, dojo city: Seattle, dojo state: WA ) ->
+>>> Dojo.objects.create(name="CodingDojo New York", city="New York", state="NY")
+<Dojo: - ( id: 3, dojo name: CodingDojo New York, dojo city: New York, dojo state: NY ) ->
+>>> Dojo.objects.all()
+<QuerySet [<Dojo: - ( id: 1, dojo name: CodingDojo Silicon Valley, dojo city: Mountain View, dojo state: CA ) ->, <Dojo: - ( id: 2, dojo name: CodingDojo Seattle, dojo city: Seattle, dojo state: WA ) ->, <Dojo: - ( id: 3, dojo name: CodingDojo New York, dojo city: New York, dojo state: NY ) ->]>
+>>> Dojo.objects.get(id=1).delete()
+(1, {'dojo_ninjas.Ninja': 0, 'dojo_ninjas.Dojo': 1})
+>>> Dojo.objects.all()
+<QuerySet [<Dojo: - ( id: 2, dojo name: CodingDojo Seattle, dojo city: Seattle, dojo state: WA ) ->, <Dojo: - ( id: 3, dojo name: CodingDojo New York, dojo city: New York, dojo state: NY ) ->]>
+>>> Dojo.objects.get(id=2).delete()
+(1, {'dojo_ninjas.Ninja': 0, 'dojo_ninjas.Dojo': 1})
+>>> Dojo.objects.get(id=3).delete()
+(1, {'dojo_ninjas.Ninja': 0, 'dojo_ninjas.Dojo': 1})
+>>> Dojo.objects.all()
+<QuerySet []>
+>>> Dojo.objects.create(name="CodingDojo Atlanta", city="Atlanta", state="GA")
+<Dojo: - ( id: 4, dojo name: CodingDojo Atlanta, dojo city: Atlanta, dojo state: GA ) ->
+>>> Dojo.objects.create(name="CodingDojo Austin", city="Austin", state="TX")
+<Dojo: - ( id: 5, dojo name: CodingDojo Austin, dojo city: Austin, dojo state: TX ) ->
+>>> Dojo.objects.create(name="CodingDojo Birmingham", city="Birmingham", state="AL")
+<Dojo: - ( id: 6, dojo name: CodingDojo Birmingham, dojo city: Birmingham, dojo state: AL ) ->
+>>> Dojo.objects.all()
+<QuerySet [<Dojo: - ( id: 4, dojo name: CodingDojo Atlanta, dojo city: Atlanta, dojo state: GA ) ->, <Dojo: - ( id: 5, dojo name: CodingDojo Austin, dojo city: Austin, dojo state: TX ) ->, <Dojo: - ( id: 6, dojo name: CodingDojo Birmingham, dojo city: Birmingham, dojo state: AL ) ->]>
+>>> Ninja.objects.create(dojo_id=4, first_name="Will", last_name="Smith")
+<Ninja: - ( id: 1, ninja first name: Will, ninja last name: Smith ) ->
+>>> Ninja.objects.create(dojo_id=4, first_name="Jaden", last_name="Smith")
+<Ninja: - ( id: 2, ninja first name: Jaden, ninja last name: Smith ) ->
+>>> Ninja.objects.create(dojo_id=4, first_name="Jaida", last_name="Smith")
+<Ninja: - ( id: 3, ninja first name: Jaida, ninja last name: Smith ) ->
+>>> Ninja.objects.all()
+<QuerySet [<Ninja: - ( id: 1, ninja first name: Will, ninja last name: Smith ) ->, <Ninja: - ( id: 2, ninja first name: Jaden, ninja last name: Smith ) ->, <Ninja: - ( id: 3, ninja first name: Jaida, ninja last name: Smith ) ->]>
+>>> Ninja.objects.create(dojo_id=5, first_name="John", last_name="Andrews")
+<Ninja: - ( id: 4, ninja first name: John, ninja last name: Andrews ) ->
+>>> Ninja.objects.create(dojo_id=5, first_name="Jenny", last_name="Andrews")
+<Ninja: - ( id: 5, ninja first name: Jenny, ninja last name: Andrews ) ->
+>>> Ninja.objects.create(dojo_id=5, first_name="Jimmy", last_name="Andrews")
+<Ninja: - ( id: 6, ninja first name: Jimmy, ninja last name: Andrews ) ->
+>>> Ninja.objects.create(dojo_id=6, first_name="Larry", last_name="Miller")
+<Ninja: - ( id: 7, ninja first name: Larry, ninja last name: Miller ) ->
+>>> Ninja.objects.create(dojo_id=6, first_name="Billy", last_name="Miller")
+<Ninja: - ( id: 8, ninja first name: Billy, ninja last name: Miller ) ->
+>>> Ninja.objects.create(dojo_id=6, first_name="Walter", last_name="Miller")
+<Ninja: - ( id: 9, ninja first name: Walter, ninja last name: Miller ) ->
+>>> Ninja.objects.filter(dojo_id=4)
+<QuerySet [<Ninja: - ( id: 1, ninja first name: Will, ninja last name: Smith ) ->, <Ninja: - ( id: 2, ninja first name: Jaden, ninja last name: Smith ) ->, <Ninja: - ( id: 3, ninja first name: Jaida, ninja last name: Smith ) ->]>
+>>> Ninja.objects.filter(dojo_id=6)
+<QuerySet [<Ninja: - ( id: 7, ninja first name: Larry, ninja last name: Miller ) ->, <Ninja: - ( id: 8, ninja first name: Billy, ninja last name: Miller ) ->, <Ninja: - ( id: 9, ninja first name: Walter, ninja last name: Miller ) ->]>
+>>>
